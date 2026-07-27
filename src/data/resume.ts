@@ -126,6 +126,15 @@ export const resume: Resume = {
       items: ["AWS Kiro", "GitHub Copilot", "Claude"],
     },
     {
+      category: "AI Engineering",
+      items: [
+        "Loop Engineering",
+        "Graph Engineering",
+        "Sub-Agent Orchestration",
+        "Enterprise Harness (25+ teams)",
+      ],
+    },
+    {
       category: "Documentation & Governance",
       items: [
         "RFCs",
