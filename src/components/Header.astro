@@ -1,0 +1,23 @@
+---
+const sections = ["about", "experience", "skills", "education", "contact"];
+---
+
+<header class="fixed top-0 right-0 left-0 z-50 border-b border-neutral-800/50 bg-neutral-950/80 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a href="#hero" class="text-xl font-bold tracking-tight text-cyan-400 transition hover:text-cyan-300">
+      MA
+    </a>
+    <ul class="flex items-center gap-6 text-sm font-medium text-neutral-400">
+      {sections.map((section) => (
+        <li>
+          <a
+            href={`#${section}`}
+            class="capitalize transition hover:text-cyan-400"
+          >
+            {section}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

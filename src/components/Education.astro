@@ -1,0 +1,30 @@
+---
+import { resume } from "../data/resume";
+---
+
+<section id="education" class="mx-auto max-w-5xl px-6 py-24">
+  <h2 class="mb-16 text-center text-3xl font-bold tracking-tight text-neutral-100">
+    Education
+  </h2>
+  <div class="mx-auto max-w-3xl space-y-8">
+    {resume.education.map((edu) => (
+      <div class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-neutral-700">
+        <h3 class="text-lg font-semibold text-neutral-100">
+          {edu.degree}
+        </h3>
+        <p class="mt-1 text-sm text-neutral-500">{edu.institution}</p>
+      </div>
+    ))}
+  </div>
+
+  <h3 class="mb-8 mt-20 text-center text-2xl font-bold tracking-tight text-neutral-100">
+    Certifications
+  </h3>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-4">
+    {resume.certifications.map((cert) => (
+      <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-sm font-medium text-cyan-400">
+        {cert}
+      </span>
+    ))}
+  </div>
+</section>
