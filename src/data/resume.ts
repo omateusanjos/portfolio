@@ -8,16 +8,25 @@ export interface Experience {
   company: string;
   period: string;
   descriptions: string[];
+  logoId: string;
 }
 
 export interface Education {
   degree: string;
   institution: string;
+  logoId: string;
 }
 
 export interface Language {
   language: string;
   level: string;
+}
+
+export interface AiTool {
+  name: string;
+  icon: string;
+  description: string;
+  logoId: string;
 }
 
 export interface Resume {
@@ -32,6 +41,7 @@ export interface Resume {
   education: Education[];
   certifications: string[];
   languages: Language[];
+  aiTools: AiTool[];
 }
 
 export const resume: Resume = {
@@ -119,6 +129,7 @@ export const resume: Resume = {
       title: "Tech Lead",
       company: "Aarin (Bradesco Group)",
       period: "2023 – Present",
+      logoId: "aarin",
       descriptions: [
         "Led up to 5 teams averaging 3–4 frontend engineers each",
         "Drove initiatives beyond day-to-day demands, strengthening the company's frontend chapter culture",
@@ -139,6 +150,7 @@ export const resume: Resume = {
       title: "Senior Software Engineer",
       company: "Aarin (Bradesco Group)",
       period: "2023 – 2024",
+      logoId: "aarin",
       descriptions: [
         "Migrated applications from Next.js 12 to Next.js 14",
         "Migrated styling from Stitches to PandaCSS",
@@ -153,6 +165,7 @@ export const resume: Resume = {
       title: "Senior Software Engineer",
       company: "Iteris & Briteris",
       period: "2022 – 2023",
+      logoId: "iteris-briteris",
       descriptions: [
         "Built real-time communication platform integrated with META APIs",
         "Developed C&A TALK — in-store QR code to video agent experience",
@@ -164,6 +177,7 @@ export const resume: Resume = {
       title: "Senior Software Engineer",
       company: "Whirlpool (WPP / Jüssi)",
       period: "2021 – 2022",
+      logoId: "whirlpool",
       descriptions: [
         "Implemented Augmented Reality (AR) for Brastemp products",
         "Built live streaming 'live + sales' platform (Compra Certa)",
@@ -176,6 +190,7 @@ export const resume: Resume = {
       title: "Senior Software Engineer",
       company: "Mevo - Receita Digital",
       period: "2021 – 2022",
+      logoId: "mevo",
       descriptions: [
         "Created medical prescription interoperability inspired by banking clearing model (SPB/CIP)",
         "Established code governance standards (PRs, codebase) for consistency and quality",
@@ -187,6 +202,7 @@ export const resume: Resume = {
       title: "Mid-Level Software Engineer",
       company: "Shift Inc",
       period: "2019 – 2021",
+      logoId: "shift",
       descriptions: [
         "Served clients including Grupo Vulcabras, Under Armour, Mizuno, Olympikus, Nissan, Julio Okubo, Azaleia, Aramis, Projeto Verão, and Cecilia Prado",
         "Built e-commerce solutions with VTEX/VTEX IO, React hooks, and legacy class components",
@@ -199,14 +215,17 @@ export const resume: Resume = {
     {
       degree: "MBA in Artificial Intelligence Applied to Business Management",
       institution: "Fundação Dom Cabral",
+      logoId: "fdc",
     },
     {
       degree: "MBA in Management, Entrepreneurship, and Business Development",
       institution: "PUCRS",
+      logoId: "pucrs",
     },
     {
       degree: "Bachelor's degree in Computer Science",
       institution: "Universidade Estácio de Sá",
+      logoId: "estacio",
     },
   ],
   certifications: ["VTEX IO Developer", "VTEX Implementation Expert"],
@@ -214,5 +233,25 @@ export const resume: Resume = {
     { language: "Portuguese", level: "Native" },
     { language: "English", level: "Fluent" },
     { language: "Spanish", level: "Advanced" },
+  ],
+  aiTools: [
+    {
+      name: "AWS Kiro",
+      icon: "aws",
+      description: "AI assistant integrated with the AWS ecosystem for infrastructure insights and code generation",
+      logoId: "aws",
+    },
+    {
+      name: "GitHub Copilot",
+      icon: "copilot",
+      description: "AI pair programmer used across teams to accelerate frontend development and code quality",
+      logoId: "github",
+    },
+    {
+      name: "Claude",
+      icon: "claude",
+      description: "Advanced AI assistant for architectural decisions, code reviews, and technical documentation",
+      logoId: "claude",
+    },
   ],
 };

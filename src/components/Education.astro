@@ -1,5 +1,6 @@
 ---
 import { resume } from "../data/resume";
+import Logo from "./Logo.astro";
 ---
 
 <section id="education" class="mx-auto max-w-5xl px-6 py-24">
@@ -8,11 +9,14 @@ import { resume } from "../data/resume";
   </h2>
   <div class="mx-auto max-w-3xl space-y-8">
     {resume.education.map((edu) => (
-      <div class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-neutral-700">
-        <h3 class="text-lg font-semibold text-neutral-100">
-          {edu.degree}
-        </h3>
-        <p class="mt-1 text-sm text-neutral-500">{edu.institution}</p>
+      <div class="flex items-center gap-5 rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-neutral-700">
+        <Logo logoId={edu.logoId} size={48} />
+        <div>
+          <h3 class="text-lg font-semibold text-neutral-100">
+            {edu.degree}
+          </h3>
+          <p class="mt-1 text-sm text-neutral-500">{edu.institution}</p>
+        </div>
       </div>
     ))}
   </div>
@@ -22,7 +26,10 @@ import { resume } from "../data/resume";
   </h3>
   <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-4">
     {resume.certifications.map((cert) => (
-      <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-sm font-medium text-cyan-400">
+      <span class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-sm font-medium text-cyan-400">
+        <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+        </svg>
         {cert}
       </span>
     ))}

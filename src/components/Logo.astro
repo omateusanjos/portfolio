@@ -1,0 +1,21 @@
+---
+import { LOGOS, initialsSvg } from "../data/logos";
+
+export interface Props {
+  logoId: string;
+  size?: number;
+}
+
+const { logoId, size = 36 } = Astro.props;
+const logo = LOGOS[logoId];
+---
+
+{
+  logo ? (
+    <div
+      class="shrink-0 overflow-hidden"
+      style={`width: ${size}px; height: ${size}px;`}
+      set:html={initialsSvg(logo.initials, logo.bgColor, size)}
+    />
+  ) : null
+}
