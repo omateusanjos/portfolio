@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 const { title } = Astro.props;
+const description =
+  "Staff Frontend Engineer & Tech Lead with 9+ years building high-scale platforms. React, Next.js, TypeScript, AWS, Micro Frontends, Design Systems, and AI-driven development.";
 ---
 
 <!doctype html>
@@ -10,13 +12,38 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Mateus Anjos — Staff Frontend Engineer & Tech Lead portfolio" />
+    <meta name="description" content={description} />
     <title>{title}</title>
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mateusanjos.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Mateus Anjos",
+      jobTitle: "Staff Frontend Engineer & Tech Lead",
+      url: "https://mateusanjos.dev",
+      email: "mateusanjosmgb@gmail.com",
+      knowsAbout: [
+        "React", "Next.js", "TypeScript", "JavaScript",
+        "Micro Frontends", "Design Systems",
+        "AWS", "Node.js", "Software Architecture",
+      ],
+    })} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <slot />
+    <script>
+      import { inject } from "@vercel/analytics";
+      inject();
+    </script>
   </body>
 </html>

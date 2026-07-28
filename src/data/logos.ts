@@ -17,6 +17,7 @@ export const LOGOS: Record<string, LogoInfo> = {
   claude: { type: "initials", initials: "C", bgColor: "#d97706" },
   aws: { type: "initials", initials: "AWS", bgColor: "#ff9900" },
   github: { type: "initials", initials: "GH", bgColor: "#6e40c9" },
+  opencode: { type: "initials", initials: "OC", bgColor: "#06b6d4" },
 };
 
 export function initialsSvg(

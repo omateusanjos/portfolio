@@ -1,0 +1,25 @@
+---
+import { resume } from "../data/resume";
+---
+
+<section id="testimonials" class="mx-auto max-w-5xl px-6 py-24">
+  <h2 class="mb-12 text-center text-3xl font-bold tracking-tight text-neutral-100">
+    What People Say
+  </h2>
+  <div class="grid gap-6 sm:grid-cols-2">
+    {resume.testimonials.map((t) => (
+      <blockquote class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-cyan-500/30">
+        <svg class="mb-4 h-8 w-8 text-neutral-700" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241zM17.583 17.321C16.553 16.227 16 15 16 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C20.591 11.69 22 13.166 22 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241z" />
+        </svg>
+        <p class="text-base leading-relaxed text-neutral-300">
+          {t.quote}
+        </p>
+        <footer class="mt-6 border-t border-neutral-800 pt-4">
+          <strong class="text-sm font-semibold text-neutral-100">{t.author}</strong>
+          <p class="text-xs text-neutral-500">{t.role}</p>
+        </footer>
+      </blockquote>
+    ))}
+  </div>
+</section>
