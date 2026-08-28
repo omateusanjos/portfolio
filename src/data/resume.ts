@@ -53,12 +53,12 @@ export interface Resume {
 
 export const resume: Resume = {
   name: "Mateus Anjos",
-  title: "Staff Frontend Engineer & Tech Lead",
+  title: "Staff Software Engineer & Tech Lead",
   location: "São Paulo, Brazil",
   email: "mateusanjosmgb@gmail.com",
   linkedin: "linkedin.com/in/mateus-anjos",
   summary:
-    "Staff Frontend Engineer & Tech Lead with over 9 years of experience in frontend development, software architecture, and building scalable web applications. Proven track record in technical leadership, setting engineering standards, technical governance, and team structuring in high-growth environments.\n\nSpecialist in performance, scalability, reliability, and cost optimization, with experience in frontend architecture migration and micro frontend implementation. Strong track record in creating reusable libraries and code standardization for efficiency and maintainability.\n\nProficient in React, Next.js, TypeScript, Node.js, and .NET, along with modern observability, CI/CD, and platform engineering practices. Experience in cross-functional collaboration with Product, Design, and Engineering teams to deliver high-impact solutions.\n\nInvolved in structuring AI initiatives applied to development, promoting the use of artificial intelligence as a productivity accelerator and code co-authoring among frontend developers.",
+    "Staff Software Engineer & Tech Lead with over 9 years of experience in frontend development, software architecture, and building scalable web applications. Proven track record in technical leadership, setting engineering standards, technical governance, and team structuring in high-growth environments.\n\nSpecialist in performance, scalability, reliability, and cost optimization, with experience in frontend architecture migration and micro frontend implementation. Strong track record in creating reusable libraries and code standardization for efficiency and maintainability.\n\nProficient in React, Next.js, TypeScript, Node.js, and .NET, along with modern observability, CI/CD, and platform engineering practices. Experience in cross-functional collaboration with Product, Design, and Engineering teams to deliver high-impact solutions.\n\nInvolved in structuring AI initiatives applied to development, promoting the use of artificial intelligence as a productivity accelerator and code co-authoring among frontend developers.",
   skills: [
     {
       category: "Frontend & Languages",
