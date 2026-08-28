@@ -155,7 +155,7 @@ export const resume: Resume = {
    experience: [
     {
       title: "Tech Lead",
-      company: "Aarin (Bradesco Group)",
+      company: "Aarin Bradesco Bank Group (Financial Services)",
       period: "2023 – Present",
       logoId: "aarin",
       descriptions: [
@@ -175,7 +175,7 @@ export const resume: Resume = {
       ],
     },
     {
-      title: "Senior Software Engineer",
+      title: "Senior Software Engineer (Financial Services)",
       company: "Aarin (Bradesco Group)",
       period: "2023 – 2024",
       logoId: "aarin",
@@ -190,7 +190,7 @@ export const resume: Resume = {
       ],
     },
     {
-      title: "Senior Software Engineer",
+      title: "Senior Software Engineer (E-commerce)",
       company: "Iteris & Briteris",
       period: "2022 – 2023",
       logoId: "iteris-briteris",
@@ -202,7 +202,7 @@ export const resume: Resume = {
       ],
     },
     {
-      title: "Senior Software Engineer",
+      title: "Senior Software Engineer (E-commerce)",
       company: "Whirlpool (WPP / Jüssi)",
       period: "2021 – 2022",
       logoId: "whirlpool",
@@ -215,7 +215,7 @@ export const resume: Resume = {
       ],
     },
     {
-      title: "Senior Software Engineer",
+      title: "Senior Software Engineer (Healthcare)",
       company: "Mevo - Receita Digital",
       period: "2021 – 2022",
       logoId: "mevo",
@@ -227,7 +227,7 @@ export const resume: Resume = {
       ],
     },
     {
-      title: "Mid-Level Software Engineer",
+      title: "Mid-Level Software Engineer (E-commerce)",
       company: "Shift Inc",
       period: "2019 – 2021",
       logoId: "shift",
