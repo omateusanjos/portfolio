@@ -156,7 +156,7 @@ export const resume: Resume = {
     {
       title: "Tech Lead",
       company: "Aarin Bradesco Bank Group (Financial Services)",
-      period: "2023 – Present",
+      period: "2024 – Present",
       logoId: "aarin",
       descriptions: [
         "Led 5 cross-functional squads (15+ frontend engineers), reducing onboarding time for new hires by 50%",
