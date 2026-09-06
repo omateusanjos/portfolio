@@ -298,11 +298,12 @@ export const resume: Resume = {
         { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa" },
       ],
       descriptions: [
-        "Delivered AR product viewer for Brastemp increasing online conversion by 22% and reducing product returns by 15%",
-        "Built live-commerce platform (Compra Certa) generating $500K+ gross sales in the first 3 months",
-        "Developed on VTEX (Legacy + VTEX IO) delivering 4 major e-commerce projects on schedule",
-        "Implemented PWA achieving 95+ Lighthouse PWA score and 2x repeat visit rate",
-        "Optimized Webpack reducing bundle size by 45% and cold builds from 60s to 12s",
+        "Architected AR product viewer (WebXR + React Three Fiber) for Brastemp across 500+ SKUs, increasing online conversion by 22% and reducing product returns by 15% — adopted by Consul and KitchenAid post-launch",
+        "Built real-time live-commerce platform (Compra Certa) with WebSockets, video streaming, and WhatsApp integration on VTEX IO, generating $500K+ gross sales in the first 3 months",
+        "Delivered 4 enterprise e-commerce projects on VTEX (Legacy + VTEX IO) for Whirlpool's brand portfolio — Brastemp, Consul, KitchenAid, B/Blend — managing end-to-end delivery across cross-functional teams",
+        "Implemented offline-first PWA across Whirlpool's brand ecosystem achieving 95+ Lighthouse PWA score, 2x repeat visit rate, and sub-3s load time for 500K+ monthly users",
+        "Optimized build toolchain (Webpack → esbuild) reducing bundle size by 45% and cold builds from 60s to 12s, cutting release cycle time by 3x for a team of 8 frontend engineers",
+        "Established frontend standards and code review practices across 6 brand teams, reducing cross-project bugs by 40% and onboarding new developers in under 1 week",
       ],
     },
     {
