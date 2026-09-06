@@ -1,14 +1,21 @@
 ---
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Locale } from "../i18n";
+import ui from "../i18n/ui";
 import profileImage from "../assets/profile-mateus.jpeg";
 
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+const otherLocale = locale === "en" ? "pt-br" : "en";
+
 const sections = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "ai-innovation", label: "AI" },
-  { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: t.nav.about },
+  { id: "experience", label: t.nav.experience },
+  { id: "ai-innovation", label: t.nav.ai },
+  { id: "skills", label: t.nav.skills },
+  { id: "education", label: t.nav.education },
+  { id: "contact", label: t.nav.contact },
 ];
 ---
 
@@ -46,30 +53,54 @@ const sections = [
           </a>
         </li>
       ))}
+      <li class="ml-2 flex items-center gap-2 border-l border-neutral-700 pl-4">
+        <a
+          href={getRelativeLocaleUrl(locale, "")}
+          class:list={["transition hover:text-cyan-400", locale === "en" ? "font-bold text-cyan-400" : ""]}
+        >EN</a>
+        <span class="text-neutral-600">/</span>
+        <a
+          href={getRelativeLocaleUrl(otherLocale, "")}
+          class:list={["transition hover:text-cyan-400", locale === "pt-br" ? "font-bold text-cyan-400" : ""]}
+        >PT</a>
+      </li>
     </ul>
 
-    <details id="mobile-navigation" class="relative sm:hidden">
-      <summary
-        class="flex size-10 cursor-pointer list-none items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-200 transition hover:border-cyan-500 hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 [&::-webkit-details-marker]:hidden"
-      >
-        <span class="sr-only">Navigation menu</span>
-        <svg aria-hidden="true" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </summary>
-      <ul class="absolute right-0 mt-3 w-52 overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950/95 p-2 text-sm font-medium text-neutral-300 shadow-2xl backdrop-blur-md">
-        {sections.map((section) => (
-          <li>
-            <a
-              href={`#${section.id}`}
-              class="block rounded-lg px-4 py-3 transition hover:bg-neutral-900 hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-cyan-400"
-            >
-              {section.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </details>
+    <div class="flex items-center gap-3 sm:hidden">
+      <div class="flex items-center gap-1 text-sm font-medium text-neutral-400">
+        <a
+          href={getRelativeLocaleUrl(locale, "")}
+          class:list={["rounded px-1.5 py-0.5 transition hover:text-cyan-400", locale === "en" ? "font-bold text-cyan-400" : ""]}
+        >EN</a>
+        <span class="text-neutral-600">/</span>
+        <a
+          href={getRelativeLocaleUrl(otherLocale, "")}
+          class:list={["rounded px-1.5 py-0.5 transition hover:text-cyan-400", locale === "pt-br" ? "font-bold text-cyan-400" : ""]}
+        >PT</a>
+      </div>
+      <details id="mobile-navigation" class="relative">
+        <summary
+          class="flex size-10 cursor-pointer list-none items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-200 transition hover:border-cyan-500 hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 [&::-webkit-details-marker]:hidden"
+        >
+          <span class="sr-only">{t.nav.menu}</span>
+          <svg aria-hidden="true" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <ul class="absolute right-0 mt-3 w-52 overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950/95 p-2 text-sm font-medium text-neutral-300 shadow-2xl backdrop-blur-md">
+          {sections.map((section) => (
+            <li>
+              <a
+                href={`#${section.id}`}
+                class="block rounded-lg px-4 py-3 transition hover:bg-neutral-900 hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-cyan-400"
+              >
+                {section.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </div>
   </nav>
 </header>
 
@@ -78,5 +109,15 @@ const sections = [
 
   menu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => menu.removeAttribute("open"));
+  });
+
+  document.querySelectorAll('a[href*="/"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const anchor = window.location.hash;
+      if (anchor) {
+        const el = e.currentTarget as HTMLAnchorElement;
+        el.href = el.href.split("#")[0] + anchor;
+      }
+    });
   });
 </script>

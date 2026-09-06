@@ -1,11 +1,17 @@
 ---
-import { resume } from "../data/resume";
+import type { Locale } from "../i18n";
+import ui from "../i18n/ui";
+import { getResume } from "../i18n/resume";
 import Logo from "./Logo.astro";
+
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+const resume = getResume(locale);
 ---
 
 <section id="experience" class="mx-auto max-w-5xl px-4 py-24 sm:px-6">
   <h2 class="mb-16 text-center text-3xl font-bold tracking-tight text-neutral-100">
-    Experience
+    {t.experience}
   </h2>
   <div class="relative space-y-12">
     <div class="absolute left-[11px] top-2 h-[calc(100%-2rem)] w-px bg-neutral-800 sm:left-[19px]" />
@@ -21,7 +27,7 @@ import Logo from "./Logo.astro";
               </h3>
             </div>
             <span class="shrink-0 text-sm text-cyan-400">
-              {job.startDate} – {job.endDate ?? "Present"}
+              {job.startDate} – {job.endDate ?? t.present}
             </span>
           </div>
           <p class="ml-[44px] text-sm font-medium text-neutral-400">

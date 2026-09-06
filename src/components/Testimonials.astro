@@ -1,10 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import { resume } from "../data/resume";
+import type { Locale } from "../i18n";
+import ui from "../i18n/ui";
+import { getResume } from "../i18n/resume";
 import celsoPhoto from "../assets/testimonials/celso-junior.jpeg";
 import cristianoPhoto from "../assets/testimonials/cristiano-goncalves.jpeg";
 import marjoriPhoto from "../assets/testimonials/marjori-tamise.jpeg";
 import mauricioPhoto from "../assets/testimonials/mauricio-kitazawa.jpeg";
+
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+const resume = getResume(locale);
 
 const photos = {
   "celso-junior": celsoPhoto,
@@ -16,16 +22,16 @@ const photos = {
 
 <section id="testimonials" class="mx-auto max-w-5xl px-4 py-24 sm:px-6">
   <h2 class="mb-12 text-center text-3xl font-bold tracking-tight text-neutral-100">
-    What People Say
+    {t.testimonials.title}
   </h2>
   <div class="grid gap-6 md:grid-cols-2">
-    {resume.testimonials.map((t) => (
+    {resume.testimonials.map((item) => (
       <blockquote class="flex h-full flex-col rounded-xl border border-neutral-800 bg-neutral-900/50 p-5 transition hover:border-cyan-500/30 sm:p-6">
         <svg aria-hidden="true" class="mb-4 h-8 w-8 text-neutral-700" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241zM17.583 17.321C16.553 16.227 16 15 16 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C20.591 11.69 22 13.166 22 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241z" />
         </svg>
-        <div lang={t.language} class="mb-6 space-y-4">
-          {t.quote.split("\n\n").map((paragraph) => (
+        <div lang={item.language} class="mb-6 space-y-4">
+          {item.quote.split("\n\n").map((paragraph) => (
             <p class="text-base leading-relaxed text-neutral-300">
               {paragraph}
             </p>
@@ -33,13 +39,13 @@ const photos = {
         </div>
         <footer class="mt-auto border-t border-neutral-800 pt-4">
           <a
-            href={t.linkedin}
+            href={item.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             class="group flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
           >
             <Image
-              src={photos[t.photoId]}
+              src={photos[item.photoId]}
               alt=""
               width={56}
               height={56}
@@ -51,7 +57,7 @@ const photos = {
             />
             <span class="min-w-0">
               <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-100 transition group-hover:text-cyan-400">
-                {t.author}
+                {item.author}
                 <svg
                   aria-hidden="true"
                   class="h-3.5 w-3.5 shrink-0"
@@ -68,7 +74,7 @@ const photos = {
                 </svg>
               </span>
               <span class="mt-1 block text-xs leading-relaxed text-neutral-400">
-                {t.role} <span aria-hidden="true">·</span> {t.company}
+                {item.role} <span aria-hidden="true">·</span> {item.company}
               </span>
             </span>
           </a>

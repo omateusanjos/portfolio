@@ -1,6 +1,12 @@
 ---
-import { resume } from "../data/resume";
+import type { Locale } from "../i18n";
+import ui from "../i18n/ui";
+import { getResume } from "../i18n/resume";
 import Logo from "./Logo.astro";
+
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+const resume = getResume(locale);
 ---
 
 <section
@@ -35,12 +41,11 @@ import Logo from "./Logo.astro";
         </svg>
       </span>
       <h2 class="text-center text-3xl font-bold tracking-tight text-neutral-100">
-        AI & Innovation
+        {t.ai.title}
       </h2>
     </div>
     <p class="mb-12 text-center text-neutral-400">
-      Driving AI adoption across the enterprise — from pair programming and
-      agent orchestration to company-wide harness infrastructure
+      {t.ai.intro}
     </p>
 
     <div class="mx-auto grid max-w-4xl gap-6 sm:grid-cols-3">
@@ -61,7 +66,7 @@ import Logo from "./Logo.astro";
 
     <div class="mx-auto mt-12 max-w-3xl">
       <h3 class="mb-6 text-center text-sm font-semibold uppercase tracking-widest text-neutral-400">
-        AI Engineering Practices
+        {t.ai.practices}
       </h3>
       <div class="flex flex-wrap justify-center gap-3">
         <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
@@ -85,8 +90,7 @@ import Logo from "./Logo.astro";
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
         </svg>
         <span class="text-sm text-cyan-300">
-          MBA in Artificial Intelligence Applied to Business Management —
-          Fundação Dom Cabral
+          {t.ai.badge}
         </span>
       </div>
     </div>

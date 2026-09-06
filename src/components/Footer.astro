@@ -1,14 +1,22 @@
 ---
-import { resume } from "../data/resume";
+import type { Locale } from "../i18n";
+import ui from "../i18n/ui";
+import { getResume } from "../i18n/resume";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+const resume = getResume(locale);
+const resumeMdUrl = locale === "en" ? "/resume.md" : "/pt-br/resume.md";
 ---
 
 <footer id="contact" class="border-t border-neutral-800">
   <div class="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6">
     <h2 class="mb-4 text-3xl font-bold tracking-tight text-neutral-100">
-      Let's Connect
+      {t.footer.title}
     </h2>
     <p class="mb-10 text-neutral-400">
-      Feel free to reach out — I'm always open to interesting conversations.
+      {t.footer.intro}
     </p>
     <div class="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
       <a
@@ -33,8 +41,8 @@ import { resume } from "../data/resume";
       </a>
     </div>
     <p class="mt-6 text-sm">
-      <a href="/resume.md" class="text-neutral-400 transition hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400">
-        Machine-readable resume
+      <a href={resumeMdUrl} class="text-neutral-400 transition hover:text-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400">
+        {t.footer.md}
       </a>
     </p>
     <ul class="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-neutral-400">
@@ -45,7 +53,7 @@ import { resume } from "../data/resume";
       ))}
     </ul>
     <p class="mt-8 text-sm text-neutral-400">
-      &copy; {new Date().getFullYear()} {resume.name}. All rights reserved.
+      &copy; {new Date().getFullYear()} {resume.name}. {t.footer.rights}
     </p>
   </div>
 </footer>

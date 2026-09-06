@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Experience from "../../components/Experience.astro";
+import EngineeringFoundations from "../../components/EngineeringFoundations.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import Skills from "../../components/Skills.astro";
+import AIHighlights from "../../components/AIHighlights.astro";
+import Education from "../../components/Education.astro";
+import Footer from "../../components/Footer.astro";
+import type { Locale } from "../../i18n";
+import ui from "../../i18n/ui";
+
+const locale = Astro.currentLocale as Locale;
+const t = ui[locale];
+---
+
+<BaseLayout title={t.meta.title} locale={locale}>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Experience />
+    <EngineeringFoundations />
+    <Testimonials />
+    <Skills />
+    <AIHighlights />
+    <Education />
+  </main>
+  <Footer />
+</BaseLayout>
