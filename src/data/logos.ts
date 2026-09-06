@@ -6,7 +6,6 @@ export interface LogoInfo {
 
 export const LOGOS: Record<string, LogoInfo> = {
   aarin: { type: "initials", initials: "A", bgColor: "#cc092f" },
-  bradesco: { type: "initials", initials: "B", bgColor: "#cc092f" },
   "iteris-briteris": { type: "initials", initials: "I&B", bgColor: "#2563eb" },
   whirlpool: { type: "initials", initials: "W", bgColor: "#003da5" },
   mevo: { type: "initials", initials: "M", bgColor: "#059669" },

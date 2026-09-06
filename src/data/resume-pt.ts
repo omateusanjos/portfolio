@@ -141,8 +141,8 @@ export const resumePt: Resume = {
       logoId: "aarin",
       media: {
         type: "video",
-        src: "/vision-pro.mov",
-        poster: "/bradesco-autosservico-poster.jpg",
+        src: "/vision-pro.mp4",
+        poster: "/vision-pro-poster.jpg",
         label: "Demo Vision Pro na Aarin Tech-Fin",
         description:
           "Gravação de demonstração mostrando integração com Vision Pro na Aarin Tech-Fin (Bradesco Group).",

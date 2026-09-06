@@ -22,9 +22,8 @@ const selfUrl = getRelativeLocaleUrl(locale, Astro.url.pathname);
 const altUrl = getRelativeLocaleUrl(otherLocale, Astro.url.pathname);
 const siteUrl = new URL("/", Astro.site ?? Astro.url);
 const socialCardUrl = new URL(socialCard.src, siteUrl);
-const localePrefix = locale === "en" ? "" : "/pt-br";
-const markdownResumeUrl = `${localePrefix}/resume.md`;
-const jsonResumeUrl = `${localePrefix}/resume.json`;
+const markdownResumeUrl = getRelativeLocaleUrl(locale, "resume.md");
+const jsonResumeUrl = getRelativeLocaleUrl(locale, "resume.json");
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -82,7 +81,7 @@ const structuredData = {
     <link rel="canonical" href={selfUrl} />
     <link rel="alternate" hreflang={lang} href={selfUrl} />
     <link rel="alternate" hreflang={langAttr[otherLocale]} href={altUrl} />
-    <link rel="alternate" hreflang="x-default" href={selfUrl} />
+    <link rel="alternate" hreflang="x-default" href={getRelativeLocaleUrl("en", Astro.url.pathname)} />
     <link rel="alternate" type="text/markdown" href={markdownResumeUrl} title="Mateus Anjos resume in Markdown" />
     <link rel="alternate" type="application/json" href={jsonResumeUrl} title="Mateus Anjos resume in JSON" />
     <meta name="generator" content={Astro.generator} />

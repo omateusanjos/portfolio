@@ -69,18 +69,11 @@ const resume = getResume(locale);
         {t.ai.practices}
       </h3>
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
-          Loop Engineering
-        </span>
-        <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
-          Graph Engineering
-        </span>
-        <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
-          Sub-Agent Orchestration
-        </span>
-        <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
-          Enterprise Harness (25+ teams)
-        </span>
+        {t.ai.badges.map((badge) => (
+          <span class="rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 text-sm font-medium text-violet-300">
+            {badge}
+          </span>
+        ))}
       </div>
     </div>
 

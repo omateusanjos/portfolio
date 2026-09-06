@@ -162,11 +162,13 @@ describe("i18n/ui", () => {
       }
       collectStrings(ui.en as unknown as Record<string, unknown>);
 
+      const allowlist = new Set(["ai.badges.0", "ai.badges.1", "ai.badges.2"]);
+
       const contaminants: string[] = [];
       function checkPt(obj: Record<string, unknown>, path = "") {
         for (const [key, value] of Object.entries(obj)) {
           const currentPath = path ? `${path}.${key}` : key;
-          if (typeof value === "string" && enValues.has(value)) {
+          if (typeof value === "string" && enValues.has(value) && !allowlist.has(currentPath)) {
             contaminants.push(currentPath);
           } else if (value && typeof value === "object") {
             checkPt(value as Record<string, unknown>, currentPath);

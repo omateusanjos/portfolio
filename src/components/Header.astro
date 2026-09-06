@@ -7,7 +7,6 @@ import profileImage from "../assets/profile-mateus.jpeg";
 
 const locale = Astro.currentLocale as Locale;
 const t = ui[locale];
-const otherLocale = locale === "en" ? "pt-br" : "en";
 
 const sections = [
   { id: "about", label: t.nav.about },
@@ -55,12 +54,12 @@ const sections = [
       ))}
       <li class="ml-2 flex items-center gap-2 border-l border-neutral-700 pl-4">
         <a
-          href={getRelativeLocaleUrl(locale, "")}
+          href={getRelativeLocaleUrl("en", "")}
           class:list={["transition hover:text-cyan-400", locale === "en" ? "font-bold text-cyan-400" : ""]}
         >EN</a>
         <span class="text-neutral-600">/</span>
         <a
-          href={getRelativeLocaleUrl(otherLocale, "")}
+          href={getRelativeLocaleUrl("pt-br", "")}
           class:list={["transition hover:text-cyan-400", locale === "pt-br" ? "font-bold text-cyan-400" : ""]}
         >PT</a>
       </li>
@@ -69,12 +68,12 @@ const sections = [
     <div class="flex items-center gap-3 sm:hidden">
       <div class="flex items-center gap-1 text-sm font-medium text-neutral-400">
         <a
-          href={getRelativeLocaleUrl(locale, "")}
+          href={getRelativeLocaleUrl("en", "")}
           class:list={["rounded px-1.5 py-0.5 transition hover:text-cyan-400", locale === "en" ? "font-bold text-cyan-400" : ""]}
         >EN</a>
         <span class="text-neutral-600">/</span>
         <a
-          href={getRelativeLocaleUrl(otherLocale, "")}
+          href={getRelativeLocaleUrl("pt-br", "")}
           class:list={["rounded px-1.5 py-0.5 transition hover:text-cyan-400", locale === "pt-br" ? "font-bold text-cyan-400" : ""]}
         >PT</a>
       </div>
@@ -115,8 +114,9 @@ const sections = [
     link.addEventListener("click", (e) => {
       const anchor = window.location.hash;
       if (anchor) {
+        e.preventDefault();
         const el = e.currentTarget as HTMLAnchorElement;
-        el.href = el.href.split("#")[0] + anchor;
+        window.location.href = el.href.split("#")[0] + anchor;
       }
     });
   });

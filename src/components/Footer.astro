@@ -7,7 +7,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 const locale = Astro.currentLocale as Locale;
 const t = ui[locale];
 const resume = getResume(locale);
-const resumeMdUrl = locale === "en" ? "/resume.md" : "/pt-br/resume.md";
+const resumeMdUrl = getRelativeLocaleUrl(locale, "resume.md");
 ---
 
 <footer id="contact" class="border-t border-neutral-800">
