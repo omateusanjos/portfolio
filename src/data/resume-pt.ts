@@ -141,13 +141,13 @@ export const resumePt: Resume = {
       logoId: "aarin",
       media: {
         type: "video",
-        src: "/vision-pro.mp4",
-        poster: "/vision-pro-poster.jpg",
-        label: "Demo Vision Pro na Aarin Tech-Fin",
+        src: "/baas-bradesco.mp4",
+        poster: "/baas-bradesco-poster.jpg",
+        label: "Demonstração da plataforma Bradesco Banking as a Service (BaaS)",
         description:
-          "Gravação de demonstração mostrando integração com Vision Pro na Aarin Tech-Fin (Bradesco Group).",
+          "Gravação de tela mostrando a plataforma BaaS do Bradesco — onboarding digital, integrações de API e portal de autoserviço para clientes corporativos.",
         caption:
-          "Exploração e desenvolvimento com Vision Pro na Aarin Tech-Fin — parte das iniciativas de inovação sob minha liderança técnica.",
+          "Plataforma Banking as a Service (BaaS) construída na Aarin Tech-Fin (Bradesco Group) — permitindo que empresas terceiras incorporem serviços bancários via APIs, entregue sob minha liderança técnica.",
       },
       descriptions: [
         "Liderei migração Next.js 12→14 em 3 aplicações em produção, reduzindo bundle size em 30% e TTFB em 40%",
