@@ -146,7 +146,7 @@ export function buildResumeJson(resume: Resume, site: string): string {
   return `${JSON.stringify(jsonResume, null, 2)}\n`;
 }
 
-export function buildLlms(resume: Resume, t: UiStrings, baseUrl: string): string {
+export function buildLlms(resume: Resume, _t: UiStrings, baseUrl: string): string {
   const summary = resume.summary.split("\n\n")[0];
   return `# ${resume.name}
 

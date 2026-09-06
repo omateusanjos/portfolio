@@ -1,10 +1,6 @@
 import { describe, it, expect } from "vitest";
 import ui, { type UiStrings } from "./ui";
-import { locales, type Locale } from "./index";
-
-type RecursiveKeys<T> = T extends object
-  ? { [K in keyof T & string]: K }[keyof T & string]
-  : never;
+import { locales } from "./index";
 
 function collectLeafPaths(obj: Record<string, unknown>, prefix = ""): string[] {
   const paths: string[] = [];

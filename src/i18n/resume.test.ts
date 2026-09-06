@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 import { getResume } from "./resume";
-import { locales } from "./index";
 import { resume } from "../data/resume";
 import { resumePt } from "../data/resume-pt";
 

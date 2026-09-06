@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 import { locales, defaultLocale, langAttr } from "./index";
-import type { Locale } from "./index";
 
 describe("i18n/index", () => {
   describe("locales", () => {

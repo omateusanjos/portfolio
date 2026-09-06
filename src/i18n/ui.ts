@@ -45,7 +45,7 @@ const en = {
     title: "Mateus Anjos — Staff Software Engineer & Tech Lead",
     ogAlt: "Mateus Anjos, Staff Software Engineer and Tech Lead",
   },
-} as const;
+};
 
 export type UiStrings = typeof en;
 
