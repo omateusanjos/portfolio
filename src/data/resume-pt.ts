@@ -139,6 +139,16 @@ export const resumePt: Resume = {
       startDate: "2023",
       endDate: "2024",
       logoId: "aarin",
+      media: {
+        type: "video",
+        src: "/vision-pro.mov",
+        poster: "/bradesco-autosservico-poster.jpg",
+        label: "Demo Vision Pro na Aarin Tech-Fin",
+        description:
+          "Gravação de demonstração mostrando integração com Vision Pro na Aarin Tech-Fin (Bradesco Group).",
+        caption:
+          "Exploração e desenvolvimento com Vision Pro na Aarin Tech-Fin — parte das iniciativas de inovação sob minha liderança técnica.",
+      },
       descriptions: [
         "Liderei migração Next.js 12→14 em 3 aplicações em produção, reduzindo bundle size em 30% e TTFB em 40%",
         "Migrei Stitches→PandaCSS eliminando 15K+ linhas de CSS morto e acelerando builds em 60%",

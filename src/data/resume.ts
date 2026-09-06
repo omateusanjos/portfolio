@@ -240,6 +240,16 @@ export const resume: Resume = {
       startDate: "2023",
       endDate: "2024",
       logoId: "aarin",
+      media: {
+        type: "video",
+        src: "/vision-pro.mov",
+        poster: "/bradesco-autosservico-poster.jpg",
+        label: "Vision Pro demo at Aarin Tech-Fin",
+        description:
+          "Demo recording showing Vision Pro integration at Aarin Tech-Fin (Bradesco Group).",
+        caption:
+          "Vision Pro exploration and development at Aarin Tech-Fin — part of the innovation initiatives under my technical leadership.",
+      },
       descriptions: [
         "Led Next.js 12→14 migration across 3 production apps, reducing bundle size by 30% and TTFB by 40%",
         "Migrated Stitches→PandaCSS eliminating 15K+ lines of dead CSS and speeding up builds by 60%",
