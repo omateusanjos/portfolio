@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
+import EngineeringFoundations from "../components/EngineeringFoundations.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Skills from "../components/Skills.astro";
 import AIHighlights from "../components/AIHighlights.astro";
@@ -13,12 +14,15 @@ import Footer from "../components/Footer.astro";
 
 <BaseLayout title="Mateus Anjos — Staff Software Engineer & Tech Lead">
   <Header />
-  <Hero />
-  <About />
-  <Experience />
-  <Testimonials />
-  <Skills />
-  <AIHighlights />
-  <Education />
+  <main id="main-content" tabindex="-1">
+    <Hero />
+    <About />
+    <Experience />
+    <EngineeringFoundations />
+    <Testimonials />
+    <Skills />
+    <AIHighlights />
+    <Education />
+  </main>
   <Footer />
 </BaseLayout>

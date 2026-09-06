@@ -3,16 +3,16 @@ import { resume } from "../data/resume";
 import Logo from "./Logo.astro";
 ---
 
-<section id="experience" class="mx-auto max-w-5xl px-6 py-24">
+<section id="experience" class="mx-auto max-w-5xl px-4 py-24 sm:px-6">
   <h2 class="mb-16 text-center text-3xl font-bold tracking-tight text-neutral-100">
     Experience
   </h2>
   <div class="relative space-y-12">
-    <div class="absolute left-[19px] top-2 h-[calc(100%-2rem)] w-px bg-neutral-800" />
-    {resume.experience.map((job) => (
-      <div class="relative pl-12">
-        <div class="absolute left-2.5 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cyan-400 bg-neutral-950" />
-        <div class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-neutral-700">
+    <div class="absolute left-[11px] top-2 h-[calc(100%-2rem)] w-px bg-neutral-800 sm:left-[19px]" />
+    {resume.experience.map((job, index) => (
+      <div class="relative pl-8 sm:pl-12">
+        <div class="absolute left-1 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cyan-400 bg-neutral-950 sm:left-3" />
+        <div class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-4 transition hover:border-neutral-700 sm:p-6">
           <div class="mb-1 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <div class="flex items-center gap-3">
               <Logo logoId={job.logoId} size={32} />
@@ -20,19 +20,77 @@ import Logo from "./Logo.astro";
                 {job.title}
               </h3>
             </div>
-            <span class="shrink-0 text-sm text-cyan-400">{job.period}</span>
+            <span class="shrink-0 text-sm text-cyan-400">
+              {job.startDate} – {job.endDate ?? "Present"}
+            </span>
           </div>
-          <p class="mb-4 ml-[44px] text-sm font-medium text-neutral-500">
+          <p class="ml-[44px] text-sm font-medium text-neutral-400">
             {job.company}
           </p>
-          <ul class="space-y-2">
-            {job.descriptions.map((desc) => (
-              <li class="flex gap-2 text-sm text-neutral-400">
-                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-600" />
-                <span>{desc}</span>
-              </li>
-            ))}
-          </ul>
+          <div
+            class:list={[
+              "mt-4 grid gap-6",
+              job.media &&
+                "md:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)] md:items-start",
+            ]}
+          >
+            {job.media && (
+              <figure class="overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950/80 md:col-start-2 md:row-start-1">
+                <div class="aspect-video">
+                  {job.media.type === "image" ? (
+                    <img
+                      src={job.media.src}
+                      alt={job.media.alt}
+                      width={job.media.width}
+                      height={job.media.height}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <video
+                      controls
+                      playsinline
+                      preload="metadata"
+                      poster={job.media.poster}
+                      aria-label={job.media.label}
+                      aria-describedby={`experience-media-${index}`}
+                      class="h-full w-full object-contain"
+                    >
+                      <source src={job.media.src} type="video/mp4" />
+                      {job.media.captions && (
+                        <track
+                          kind="captions"
+                          src={job.media.captions.src}
+                          srclang={job.media.captions.srcLang}
+                          label={job.media.captions.label}
+                        />
+                      )}
+                    </video>
+                  )}
+                </div>
+                {(job.media.caption || job.media.type === "video") && (
+                  <figcaption
+                    id={`experience-media-${index}`}
+                    class="space-y-2 border-t border-neutral-800 px-3 py-2 text-xs leading-relaxed text-neutral-400"
+                  >
+                    {job.media.caption && <p>{job.media.caption}</p>}
+                    {job.media.type === "video" && (
+                      <p>{job.media.description}</p>
+                    )}
+                  </figcaption>
+                )}
+              </figure>
+            )}
+            <ul class="space-y-2 md:col-start-1 md:row-start-1">
+              {job.descriptions.map((desc) => (
+                <li class="flex gap-2 text-sm text-neutral-400">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-600" />
+                  <span>{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     ))}

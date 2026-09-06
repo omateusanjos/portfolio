@@ -1,43 +1,33 @@
-# Astro Starter Kit: Minimal
+# Mateus Anjos Portfolio
+
+Static portfolio built with Astro and Tailwind CSS.
+
+## Development
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The production build is generated with:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`src/data/resume.ts` is the single source of truth for the portfolio and its machine-readable resume formats.
 
-Any static assets, like images, can be placed in the `public/` directory.
+The site exposes these public routes:
 
-## 🧞 Commands
+| Route | Purpose |
+| --- | --- |
+| `/` | Human-readable portfolio |
+| `/resume.md` | Full resume in Markdown |
+| `/resume.json` | Structured resume in JSON Resume format |
+| `/llms.txt` | Short index for language models and agents |
+| `/robots.txt` | Crawler permissions and sitemap location |
+| `/sitemap.xml` | Canonical page sitemap |
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The canonical production URL is configured through the `site` property in `astro.config.mjs`. Metadata and generated endpoints use this value instead of maintaining separate hard-coded URLs.

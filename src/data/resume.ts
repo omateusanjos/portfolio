@@ -3,18 +3,57 @@ export interface SkillCategory {
   items: string[];
 }
 
+export type ExperienceMedia =
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      caption?: string;
+    }
+  | {
+      type: "video";
+      src: string;
+      poster: string;
+      label: string;
+      description: string;
+      caption?: string;
+      captions?: {
+        src: string;
+        srcLang: string;
+        label: string;
+      };
+    };
+
 export interface Experience {
   title: string;
   company: string;
-  period: string;
+  startDate: string;
+  endDate?: string;
   descriptions: string[];
   logoId: string;
+  media?: ExperienceMedia;
 }
 
+export interface EngineeringFoundation {
+  title: string;
+  category: string;
+  summary: string;
+  metrics: {
+    value: string;
+    label: string;
+  }[];
+  outcomes: string[];
+}
+
+export type EducationLogoId = "fdc" | "pucrs" | "somec" | "estacio";
+
 export interface Education {
-  degree: string;
+  studyType: string;
+  area: string;
   institution: string;
-  logoId: string;
+  logoId: EducationLogoId;
 }
 
 export interface Language {
@@ -22,10 +61,20 @@ export interface Language {
   level: string;
 }
 
+export type TestimonialPhotoId =
+  | "cristiano-goncalves"
+  | "mauricio-kitazawa"
+  | "celso-junior"
+  | "marjori-tamise";
+
 export interface Testimonial {
   quote: string;
+  language: "en" | "pt-BR";
   author: string;
   role: string;
+  company: string;
+  linkedin: string;
+  photoId: TestimonialPhotoId;
 }
 
 export interface AiTool {
@@ -44,6 +93,7 @@ export interface Resume {
   summary: string;
   skills: SkillCategory[];
   experience: Experience[];
+  engineeringFoundations: EngineeringFoundation[];
   education: Education[];
   certifications: string[];
   testimonials: Testimonial[];
@@ -152,17 +202,27 @@ export const resume: Resume = {
       ],
     },
   ],
-   experience: [
+  experience: [
     {
       title: "Tech Lead",
-      company: "Aarin Bradesco Bank Group (Financial Services)",
-      period: "2024 – Present",
+      company: "Aarin Tech-Fin (Bradesco Group)",
+      startDate: "2024",
       logoId: "aarin",
+      media: {
+        type: "video",
+        src: "/bradesco-autosservico.mp4",
+        poster: "/bradesco-autosservico-poster.jpg",
+        label: "Bradesco Autosserviço product demonstration",
+        description:
+          "Silent screen recording showing the Bradesco consórcio self-service page and the virtual assistant answering customer questions during the online purchase journey.",
+        caption:
+          "Bradesco's official end-to-end digital journey for purchasing consórcio plans, delivered under my technical leadership for one of Brazil's largest banks and a market-leading consórcio operation.",
+      },
       descriptions: [
         "Led 5 cross-functional squads (15+ frontend engineers), reducing onboarding time for new hires by 50%",
         "Drove frontend chapter culture initiatives adopted by 25+ engineers across the organization",
         "Implemented Amplitude event governance cutting analytics costs by 40% while maintaining 99.9% event data reliability",
-        "Architected multi-tenant white-label platform serving 2M+ users across 3 business units, compressing new tenant setup from 6 months to 3 weeks",
+        "Architected multi-tenant white-label platform serving 2M+ users across 3 business units, compressing end-to-end tenant rollout from 6 months to 3 weeks",
         "Delivered biometric onboarding (UNICO SDK) achieving 85% conversion rate and 60% reduction in dropout vs previous flow",
         "Built company-wide Design System (Radix + Docusaurus) adopted by 8 product teams, reducing UI development time by 35%",
         "Developed reusable component library published to 3 internal packages, shared across the consortium ecosystem",
@@ -176,8 +236,9 @@ export const resume: Resume = {
     },
     {
       title: "Senior Software Engineer (Financial Services)",
-      company: "Aarin (Bradesco Group)",
-      period: "2023 – 2024",
+      company: "Aarin Tech-Fin (Bradesco Group)",
+      startDate: "2023",
+      endDate: "2024",
       logoId: "aarin",
       descriptions: [
         "Led Next.js 12→14 migration across 3 production apps, reducing bundle size by 30% and TTFB by 40%",
@@ -192,7 +253,8 @@ export const resume: Resume = {
     {
       title: "Senior Software Engineer (E-commerce)",
       company: "Iteris & Briteris",
-      period: "2022 – 2023",
+      startDate: "2022",
+      endDate: "2023",
       logoId: "iteris-briteris",
       descriptions: [
         "Architected real-time platform handling 1M+ daily WhatsApp messages via META APIs at <500ms delivery latency",
@@ -204,7 +266,8 @@ export const resume: Resume = {
     {
       title: "Senior Software Engineer (E-commerce)",
       company: "Whirlpool (WPP / Jüssi)",
-      period: "2021 – 2022",
+      startDate: "2021",
+      endDate: "2022",
       logoId: "whirlpool",
       descriptions: [
         "Delivered AR product viewer for Brastemp increasing online conversion by 22% and reducing product returns by 15%",
@@ -217,7 +280,8 @@ export const resume: Resume = {
     {
       title: "Senior Software Engineer (Healthcare)",
       company: "Mevo - Receita Digital",
-      period: "2021 – 2022",
+      startDate: "2021",
+      endDate: "2022",
       logoId: "mevo",
       descriptions: [
         "Created medical prescription interoperability standard inspired by banking clearing model (SPB/CIP), processing 10K+ daily transactions",
@@ -229,7 +293,8 @@ export const resume: Resume = {
     {
       title: "Mid-Level Software Engineer (E-commerce)",
       company: "Shift Inc",
-      period: "2019 – 2021",
+      startDate: "2019",
+      endDate: "2021",
       logoId: "shift",
       descriptions: [
         "Delivered 8+ VTEX e-commerce storefronts for Under Armour, Mizuno, Nissan, and 7 other brands, averaging 90+ Lighthouse scores",
@@ -239,39 +304,128 @@ export const resume: Resume = {
       ],
     },
   ],
+  engineeringFoundations: [
+    {
+      title: "Frontend Intelligence Platform",
+      category: "Internal Developer Platform",
+      summary:
+        "Built an internal developer platform that connected frontend defects to architecture layers, helping teams distinguish UI failures from business-logic failures and act on root causes.",
+      metrics: [
+        { value: "12–15", label: "squads using shared quality signals" },
+        { value: "30", label: "developers supported" },
+      ],
+      outcomes: [
+        "Centralized frontend governance, Golden Paths, engineering metrics, and scorecards",
+        "Shortened diagnosis time and gave engineering managers evidence for targeted bug-reduction plans",
+      ],
+    },
+    {
+      title: "Analytics Autocapture Library",
+      category: "Internal Library",
+      summary:
+        "Built an autocapture library that replaced manual analytics instrumentation with a reliable, performance-conscious event pipeline.",
+      metrics: [
+        { value: "40%", label: "lower analytics costs" },
+        { value: "99.9%", label: "event data reliability" },
+      ],
+      outcomes: [
+        "Eliminated hand-coded tracking events and recurring instrumentation work for engineers",
+        "Enabled Product teams to select relevant events from a consistent catalog instead of mapping and naming every event",
+      ],
+    },
+    {
+      title: "White-label Tenant Foundation",
+      category: "Internal Library",
+      summary:
+        "Built a reusable tenant library that reduced the technical white-label configuration step across multiple products to minutes.",
+      metrics: [
+        { value: "Minutes", label: "to configure a tenant" },
+        { value: "Multi-product", label: "shared foundation" },
+      ],
+      outcomes: [
+        "Centralized tenant configuration and branding across product experiences",
+        "Reduced duplicated implementation effort and helped cut end-to-end tenant rollout from months to weeks",
+      ],
+    },
+    {
+      title: "Frontend Engineering Playbook",
+      category: "Engineering Standards",
+      summary:
+        "Authored company-wide frontend style guides that turned recurring implementation decisions into clear, reusable engineering standards.",
+      metrics: [
+        { value: "Company-wide", label: "shared standards" },
+        { value: "Repeatable", label: "engineering decisions" },
+      ],
+      outcomes: [
+        "Made implementation, testing, and tooling conventions discoverable across teams",
+        "Simplified onboarding and reduced repeated alignment during development and code review",
+      ],
+    },
+  ],
   education: [
     {
-      degree: "MBA in Artificial Intelligence Applied to Business Management",
+      studyType: "MBA",
+      area: "Artificial Intelligence Applied to Business Management",
       institution: "Fundação Dom Cabral",
       logoId: "fdc",
     },
     {
-      degree: "MBA in Management, Entrepreneurship, and Business Development",
+      studyType: "MBA",
+      area: "Management, Entrepreneurship, and Business Development",
       institution: "PUCRS",
       logoId: "pucrs",
     },
     {
-      degree: "Bachelor's degree in Computer Science",
+      studyType: "Bachelor's degree",
+      area: "Computer Science",
       institution: "Universidade Estácio de Sá",
       logoId: "estacio",
+    },
+    {
+      studyType: "Technical degree",
+      area: "Information Technology",
+      institution: "Colégio Santa Cruz Somec",
+      logoId: "somec",
     },
   ],
   certifications: ["VTEX IO Developer", "VTEX Implementation Expert"],
   testimonials: [
     {
+      quote:
+        "Mateus é um profissional extremamente fora da curva.\n\nTodo problema complexo que eu apresentava, ele fazia questão de se aprofundar para trazer a solução mais elegante possível. Se você tem um desafio grande e precisa de alguém que resolva com muito detalhamento e profundidade, ele é a pessoa certa.\n\nNos últimos 3 meses aqui na Aarin, ele atuou muito próximo a mim (na minha posição de Chapter Lead de Frontend). Tive a oportunidade de passar diversos feedbacks de melhoria e a atitude dele sempre foi exemplar. Ele tem a humildade de ouvir, entender e aplicar as mudanças rapidamente, sendo super aberto a mudar a rota caso a sua ideia inicial não seja a melhor para aquele cenário.",
+      language: "pt-BR",
+      author: "Cristiano Gonçalves",
+      role: "Tech Manager",
+      company: "Aarin Tech-Fin (Bradesco Group)",
+      linkedin: "https://www.linkedin.com/in/cristiano-gon%C3%A7alves/",
+      photoId: "cristiano-goncalves",
+    },
+    {
       quote: "No período em que trabalhei com o Mateus, pude perceber o potencial que ele possuía para ajudar as pessoas, com empatia e imensa habilidade técnica. O patamar atual dele é apenas uma consequência de suas habilidades profissionais e sociais. Ele amadureceu muito, solidificando seus conhecimentos de tal maneira que agora auxilia outros profissionais em diversos estágios de carreira.",
+      language: "pt-BR",
       author: "Mauricio Kitazawa",
-      role: "Senior Frontend Engineer (former teammate)",
+      role: "Senior Software Engineer",
+      company: "Globalweb Corp",
+      linkedin: "https://www.linkedin.com/in/mauricio-kitazawa/",
+      photoId: "mauricio-kitazawa",
     },
     {
       quote: "Mateus is an excellent professional. I had the opportunity to work directly with him for almost a year, and during this time I was sure that he would become a great professional, both for his leadership profile and technical mastery.",
+      language: "en",
       author: "Celso Junior",
-      role: "Software Engineer (former teammate)",
+      role: "Senior Software Engineer",
+      company: "Cheesecake Labs",
+      linkedin: "https://www.linkedin.com/in/celso-junior/",
+      photoId: "celso-junior",
     },
     {
       quote: "Mateus foi um achado no meio de um furacão — desenvolvedor dedicado e com garra. Trouxe inovação para a equipe, tornando-se líder no que entrava, acionado constantemente para resoluções de problemas urgentes, nunca deixou a equipe na mão e sempre foi muito prestativo ao ajudar os demais. Muito orgulhosa de poder ter trabalhado com ele.",
+      language: "pt-BR",
       author: "Márjori Tamise de Carvalho Souza",
-      role: "Group Tech Manager (former manager)",
+      role: "Group Tech Manager",
+      company: "Itaú",
+      linkedin: "https://www.linkedin.com/in/marjori-tamise/",
+      photoId: "marjori-tamise",
     },
   ],
   languages: [

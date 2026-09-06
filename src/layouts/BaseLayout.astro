@@ -1,8 +1,61 @@
 ---
+import socialCard from "../assets/social-card.png";
 import "../styles/global.css";
+import { resume } from "../data/resume";
+
 const { title } = Astro.props;
 const description =
   "Staff Software Engineer & Tech Lead with 9+ years building high-scale platforms. React, Next.js, TypeScript, AWS, Micro Frontends, Design Systems, and AI-driven development.";
+const siteUrl = new URL("/", Astro.site ?? Astro.url);
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const socialCardUrl = new URL(socialCard.src, siteUrl);
+const markdownResumeUrl = new URL("/resume.md", siteUrl);
+const jsonResumeUrl = new URL("/resume.json", siteUrl);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${canonicalUrl}#profile`,
+  url: canonicalUrl,
+  name: title,
+  description,
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${siteUrl}#person`,
+    name: resume.name,
+    jobTitle: resume.title,
+    url: siteUrl,
+    email: resume.email,
+    sameAs: [`https://${resume.linkedin}`],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "São Paulo",
+      addressCountry: "BR",
+    },
+    knowsAbout: resume.skills.flatMap(({ items }) => items),
+    knowsLanguage: resume.languages.map(({ language }) => language),
+    alumniOf: resume.education.map(({ institution }) => ({
+      "@type": "EducationalOrganization",
+      name: institution,
+    })),
+    hasCredential: resume.certifications.map((certification) => ({
+      "@type": "EducationalOccupationalCredential",
+      name: certification,
+    })),
+    worksFor: {
+      "@type": "Organization",
+      name: resume.experience[0].company,
+    },
+    hasOccupation: {
+      "@type": "Occupation",
+      name: resume.title,
+      occupationLocation: {
+        "@type": "City",
+        name: "São Paulo",
+      },
+      skills: resume.skills.flatMap(({ items }) => items).join(", "),
+    },
+  },
+};
 ---
 
 <!doctype html>
@@ -11,35 +64,40 @@ const description =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/markdown" href={markdownResumeUrl} title="Mateus Anjos resume in Markdown" />
+    <link rel="alternate" type="application/json" href={jsonResumeUrl} title="Mateus Anjos resume in JSON" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <title>{title}</title>
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mateusanjos.dev" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialCardUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mateus Anjos, Staff Software Engineer and Tech Lead" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={socialCardUrl} />
+    <meta name="twitter:image:alt" content="Mateus Anjos, Staff Software Engineer and Tech Lead" />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Mateus Anjos",
-      jobTitle: "Staff Software Engineer & Tech Lead",
-      url: "https://mateusanjos.dev",
-      email: "mateusanjosmgb@gmail.com",
-      knowsAbout: [
-        "React", "Next.js", "TypeScript", "JavaScript",
-        "Micro Frontends", "Design Systems",
-        "AWS", "Node.js", "Software Architecture",
-      ],
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <a
+      href="#main-content"
+      class="fixed top-4 left-4 z-[100] -translate-y-20 rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition focus:translate-y-0 focus:outline-2 focus:outline-offset-2 focus:outline-white"
+    >
+      Skip to main content
+    </a>
     <slot />
     <script>
       import { inject } from "@vercel/analytics";

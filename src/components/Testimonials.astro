@@ -1,23 +1,77 @@
 ---
+import { Image } from "astro:assets";
 import { resume } from "../data/resume";
+import celsoPhoto from "../assets/testimonials/celso-junior.jpeg";
+import cristianoPhoto from "../assets/testimonials/cristiano-goncalves.jpeg";
+import marjoriPhoto from "../assets/testimonials/marjori-tamise.jpeg";
+import mauricioPhoto from "../assets/testimonials/mauricio-kitazawa.jpeg";
+
+const photos = {
+  "celso-junior": celsoPhoto,
+  "cristiano-goncalves": cristianoPhoto,
+  "marjori-tamise": marjoriPhoto,
+  "mauricio-kitazawa": mauricioPhoto,
+};
 ---
 
-<section id="testimonials" class="mx-auto max-w-5xl px-6 py-24">
+<section id="testimonials" class="mx-auto max-w-5xl px-4 py-24 sm:px-6">
   <h2 class="mb-12 text-center text-3xl font-bold tracking-tight text-neutral-100">
     What People Say
   </h2>
-  <div class="grid gap-6 sm:grid-cols-2">
+  <div class="grid gap-6 md:grid-cols-2">
     {resume.testimonials.map((t) => (
-      <blockquote class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-cyan-500/30">
-        <svg class="mb-4 h-8 w-8 text-neutral-700" fill="currentColor" viewBox="0 0 24 24">
+      <blockquote class="flex h-full flex-col rounded-xl border border-neutral-800 bg-neutral-900/50 p-5 transition hover:border-cyan-500/30 sm:p-6">
+        <svg aria-hidden="true" class="mb-4 h-8 w-8 text-neutral-700" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241zM17.583 17.321C16.553 16.227 16 15 16 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C20.591 11.69 22 13.166 22 15c0 1.966-1.59 3.562-3.543 3.562-1.102 0-2.034-.484-2.874-1.241z" />
         </svg>
-        <p class="text-base leading-relaxed text-neutral-300">
-          {t.quote}
-        </p>
-        <footer class="mt-6 border-t border-neutral-800 pt-4">
-          <strong class="text-sm font-semibold text-neutral-100">{t.author}</strong>
-          <p class="text-xs text-neutral-500">{t.role}</p>
+        <div lang={t.language} class="mb-6 space-y-4">
+          {t.quote.split("\n\n").map((paragraph) => (
+            <p class="text-base leading-relaxed text-neutral-300">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <footer class="mt-auto border-t border-neutral-800 pt-4">
+          <a
+            href={t.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+          >
+            <Image
+              src={photos[t.photoId]}
+              alt=""
+              width={56}
+              height={56}
+              densities={[1, 2]}
+              format="webp"
+              quality={85}
+              loading="lazy"
+              class="size-14 shrink-0 rounded-full border border-neutral-700 object-cover transition group-hover:border-cyan-400/60"
+            />
+            <span class="min-w-0">
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-100 transition group-hover:text-cyan-400">
+                {t.author}
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.75"
+                    d="M13.5 6H18m0 0v4.5M18 6l-7.5 7.5M9 7.5H6.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25V15"
+                  />
+                </svg>
+              </span>
+              <span class="mt-1 block text-xs leading-relaxed text-neutral-400">
+                {t.role} <span aria-hidden="true">·</span> {t.company}
+              </span>
+            </span>
+          </a>
         </footer>
       </blockquote>
     ))}
