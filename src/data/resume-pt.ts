@@ -187,6 +187,14 @@ export const resumePt: Resume = {
       startDate: "2021",
       endDate: "2022",
       logoId: "whirlpool",
+      clientLogos: [
+        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool" },
+        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp" },
+        { src: "/whirlpool/logo-consul.png", alt: "Consul" },
+        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid" },
+        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend" },
+        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa" },
+      ],
       descriptions: [
         "Entreguei visualizador de produto AR para Brastemp aumentando conversão online em 22% e reduzindo devoluções em 15%",
         "Construí plataforma de live-commerce (Compra Certa) gerando $500K+ bruto nos primeiros 3 meses",

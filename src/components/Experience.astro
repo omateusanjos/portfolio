@@ -98,6 +98,24 @@ const resume = getResume(locale);
             </ul>
           </div>
         </div>
+        {job.clientLogos && job.clientLogos.length > 0 && (
+          <div class="relative mt-4 overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900/50 px-4 py-3">
+            <div class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-neutral-900/50 to-transparent z-10" />
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-neutral-900/50 to-transparent z-10" />
+            <div class="flex animate-marquee whitespace-nowrap">
+              {[...job.clientLogos, ...job.clientLogos].map((logo) => (
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  height={32}
+                  loading="lazy"
+                  decoding="async"
+                  class="mx-6 h-8 w-auto object-contain opacity-50 grayscale transition hover:opacity-100 hover:grayscale-0"
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     ))}
   </div>

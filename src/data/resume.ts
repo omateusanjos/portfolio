@@ -34,6 +34,7 @@ export interface Experience {
   descriptions: string[];
   logoId: string;
   media?: ExperienceMedia;
+  clientLogos?: { src: string; alt: string }[];
 }
 
 export interface EngineeringFoundation {
@@ -288,6 +289,14 @@ export const resume: Resume = {
       startDate: "2021",
       endDate: "2022",
       logoId: "whirlpool",
+      clientLogos: [
+        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool" },
+        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp" },
+        { src: "/whirlpool/logo-consul.png", alt: "Consul" },
+        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid" },
+        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend" },
+        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa" },
+      ],
       descriptions: [
         "Delivered AR product viewer for Brastemp increasing online conversion by 22% and reducing product returns by 15%",
         "Built live-commerce platform (Compra Certa) generating $500K+ gross sales in the first 3 months",
