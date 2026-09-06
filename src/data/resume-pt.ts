@@ -155,6 +155,15 @@ export const resumePt: Resume = {
       startDate: "2022",
       endDate: "2023",
       logoId: "iteris-briteris",
+      media: {
+        type: "image",
+        src: "/candea-ecommerce.png",
+        alt: "Homepage do e-commerce C&A mostrando campanha promocional com cupom de 30% OFF",
+        width: 1920,
+        height: 1080,
+        caption:
+          "Plataforma de e-commerce C&A construída em VTEX, com promoções em tempo real e integração com WhatsApp — entregue sob minha liderança técnica na Iteris & Briteris.",
+      },
       descriptions: [
         "Arquitetei plataforma processando 1M+ mensagens diárias via WhatsApp APIs da META com latência de entrega <500ms",
         "Lancei C&A TALK (QR→vídeo agente) alcançando 50K+ interações mensais em 200+ lojas físicas",
