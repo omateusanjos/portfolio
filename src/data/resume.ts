@@ -34,7 +34,7 @@ export interface Experience {
   descriptions: string[];
   logoId: string;
   media?: ExperienceMedia;
-  clientLogos?: { src: string; alt: string }[];
+  clientLogos?: { src: string; alt: string; description: string; url: string }[];
 }
 
 export interface EngineeringFoundation {
@@ -290,12 +290,12 @@ export const resume: Resume = {
       endDate: "2022",
       logoId: "whirlpool",
       clientLogos: [
-        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool" },
-        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp" },
-        { src: "/whirlpool/logo-consul.png", alt: "Consul" },
-        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid" },
-        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend" },
-        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa" },
+        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool", description: "Global leader in home appliances — washers, dryers, refrigerators, and kitchen solutions sold in 190+ countries.", url: "https://www.whirlpool.com.br" },
+        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp", description: "Brazil's #1 appliance brand — refrigerators, washing machines, and ovens trusted by millions of Brazilian households.", url: "https://www.brastemp.com.br" },
+        { src: "/whirlpool/logo-consul.png", alt: "Consul", description: "Trusted Brazilian brand for refrigeration and washing solutions — affordable quality for everyday life.", url: "https://www.consul.com.br" },
+        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid", description: "Premium kitchen appliances — stand mixers, refrigerators, and dishwashers for culinary enthusiasts worldwide.", url: "https://www.kitchenaid.com.br" },
+        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend", description: "Whirlpool's direct-to-consumer platform for appliance subscriptions and smart home solutions in Brazil.", url: "https://www.bblend.com.br" },
+        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa", description: "Whirlpool's e-commerce platform for certified refurbished appliances with warranty and free shipping.", url: "https://www.compracerta.com.br" },
       ],
       descriptions: [
         "Architected AR product viewer (WebXR + React Three Fiber) for Brastemp across 500+ SKUs, increasing online conversion by 22% and reducing product returns by 15% — adopted by Consul and KitchenAid post-launch",

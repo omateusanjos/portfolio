@@ -188,12 +188,12 @@ export const resumePt: Resume = {
       endDate: "2022",
       logoId: "whirlpool",
       clientLogos: [
-        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool" },
-        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp" },
-        { src: "/whirlpool/logo-consul.png", alt: "Consul" },
-        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid" },
-        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend" },
-        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa" },
+        { src: "/whirlpool/logo-whirlpool.png", alt: "Whirlpool", description: "Líder global em eletrodomésticos — máquinas de lavar, secadoras, geladeiras e soluções de cozinha vendidas em 190+ países.", url: "https://www.whirlpool.com.br" },
+        { src: "/whirlpool/logo-brastemp.png", alt: "Brastemp", description: "Marca #1 em eletrodomésticos no Brasil — geladeiras, máquinas de lavar e fornos confiáveis por milhões de lares brasileiros.", url: "https://www.brastemp.com.br" },
+        { src: "/whirlpool/logo-consul.png", alt: "Consul", description: "Marca brasileira de confiança em refrigeração e lavanderia — qualidade acessível para o dia a dia.", url: "https://www.consul.com.br" },
+        { src: "/whirlpool/logo-kitchenaid.png", alt: "KitchenAid", description: "Eletrodomésticos premium — planetárias, geladeiras e lava-louças para entusiastas da culinária no mundo todo.", url: "https://www.kitchenaid.com.br" },
+        { src: "/whirlpool/logo-bblend.png", alt: "B/Blend", description: "Plataforma direta ao consumidor da Whirlpool para assinatura de eletrodomésticos e soluções de casa inteligente no Brasil.", url: "https://www.bblend.com.br" },
+        { src: "/whirlpool/logo-compracerta.png", alt: "Compra Certa", description: "Plataforma e-commerce da Whirlpool para eletrodomésticos certificados e recondicionados com garantia e frete grátis.", url: "https://www.compracerta.com.br" },
       ],
       descriptions: [
         "Arquitetei visualizador de produto AR (WebXR + React Three Fiber) para a Brastemp com 500+ SKUs, aumentando conversão online em 22% e reduzindo devoluções em 15% — adotado por Consul e KitchenAid após o lançamento",

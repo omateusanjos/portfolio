@@ -104,7 +104,15 @@ const resume = getResume(locale);
             <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-neutral-900/80 to-transparent z-10" />
             <div class="flex animate-marquee items-center gap-4 whitespace-nowrap">
               {[...job.clientLogos, ...job.clientLogos].map((logo) => (
-                <div class="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg bg-neutral-800/60 px-3 transition hover:bg-neutral-700/60">
+                <button
+                  type="button"
+                  data-logo
+                  data-logo-src={logo.src}
+                  data-logo-alt={logo.alt}
+                  data-logo-desc={logo.description}
+                  data-logo-url={logo.url}
+                  class="flex h-12 w-32 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-neutral-800/60 px-3 transition hover:bg-neutral-700/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+                >
                   <img
                     src={logo.src}
                     alt={logo.alt}
@@ -113,7 +121,7 @@ const resume = getResume(locale);
                     decoding="async"
                     class="h-8 max-w-full object-contain"
                   />
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -122,3 +130,65 @@ const resume = getResume(locale);
     ))}
   </div>
 </section>
+
+<dialog
+  id="logo-dialog"
+  class="backdrop:bg-black/80 backdrop:backdrop-blur-sm rounded-xl border border-neutral-800 bg-neutral-900 p-0 text-neutral-100 shadow-2xl max-w-sm w-[calc(100vw-2rem)]"
+>
+  <div class="relative p-6">
+    <button
+      type="button"
+      id="logo-dialog-close"
+      aria-label="Close"
+      class="absolute top-3 right-3 rounded-lg p-1.5 text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+    >
+      <svg aria-hidden="true" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="flex flex-col items-center text-center">
+      <img id="dialog-logo-img" src="" alt="" class="h-16 w-auto object-contain" />
+      <h3 id="dialog-logo-name" class="mt-4 text-lg font-semibold"></h3>
+      <p id="dialog-logo-desc" class="mt-2 text-sm leading-relaxed text-neutral-400"></p>
+      <a
+        id="dialog-logo-link"
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-400 transition hover:bg-cyan-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+      >
+        Visitar site
+        <span class="sr-only">(abre em nova aba)</span>
+        <svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("logo-dialog") as HTMLDialogElement;
+  const img = document.getElementById("dialog-logo-img") as HTMLImageElement;
+  const name = document.getElementById("dialog-logo-name") as HTMLElement;
+  const desc = document.getElementById("dialog-logo-desc") as HTMLElement;
+  const link = document.getElementById("dialog-logo-link") as HTMLAnchorElement;
+  const closeBtn = document.getElementById("logo-dialog-close") as HTMLButtonElement;
+
+  document.querySelectorAll("[data-logo]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      img.src = btn.getAttribute("data-logo-src")!;
+      img.alt = btn.getAttribute("data-logo-alt")!;
+      name.textContent = btn.getAttribute("data-logo-alt")!;
+      desc.textContent = btn.getAttribute("data-logo-desc")!;
+      link.href = btn.getAttribute("data-logo-url")!;
+      dialog.showModal();
+    });
+  });
+
+  closeBtn?.addEventListener("click", () => dialog.close());
+
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+</script>
