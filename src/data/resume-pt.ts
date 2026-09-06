@@ -191,6 +191,15 @@ export const resumePt: Resume = {
       startDate: "2021",
       endDate: "2022",
       logoId: "mevo",
+      media: {
+        type: "image",
+        src: "/receita-digital.png",
+        alt: "Plataforma Mevo Receita Digital — interface de prescrição médica digital",
+        width: 1920,
+        height: 1080,
+        caption:
+          "Mevo Receita Digital — plataforma de interoperabilidade de prescrições médicas digitais, processando 10K+ transações diárias via modelo de compensação inspirado em bancário (SPB/CIP).",
+      },
       descriptions: [
         "Criei padrão de interoperabilidade de prescrições médicas inspirado no modelo de compensação bancária (SPB/CIP), processando 10K+ transações diárias",
         "Estabeleci padrões de governança de código adotados por 15+ engenheiros, reduzindo tempo de merge de PR em 40%",

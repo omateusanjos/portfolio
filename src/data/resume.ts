@@ -292,6 +292,15 @@ export const resume: Resume = {
       startDate: "2021",
       endDate: "2022",
       logoId: "mevo",
+      media: {
+        type: "image",
+        src: "/receita-digital.png",
+        alt: "Mevo Receita Digital platform — digital medical prescription interface",
+        width: 1920,
+        height: 1080,
+        caption:
+          "Mevo Receita Digital — interoperability platform for digital medical prescriptions, processing 10K+ daily transactions via banking-inspired clearing model (SPB/CIP).",
+      },
       descriptions: [
         "Created medical prescription interoperability standard inspired by banking clearing model (SPB/CIP), processing 10K+ daily transactions",
         "Established code governance standards adopted by 15+ engineers, reducing PR merge time by 40%",
