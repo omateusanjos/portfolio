@@ -104,14 +104,14 @@ const resume = getResume(locale);
             <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-neutral-900/80 to-transparent z-10" />
             <div class="flex animate-marquee items-center gap-4 whitespace-nowrap">
               {[...job.clientLogos, ...job.clientLogos].map((logo) => (
-                <div class="flex h-12 shrink-0 items-center justify-center rounded-lg bg-neutral-800/60 px-4 transition hover:bg-neutral-700/60">
+                <div class="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg bg-neutral-800/60 px-3 transition hover:bg-neutral-700/60">
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     height={32}
                     loading="lazy"
                     decoding="async"
-                    class="h-8 w-auto object-contain"
+                    class="h-8 max-w-full object-contain"
                   />
                 </div>
               ))}
